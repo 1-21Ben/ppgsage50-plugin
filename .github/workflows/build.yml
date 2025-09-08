@@ -54,7 +54,7 @@ jobs:
       run: powershell Compress-Archive -Path 'dist\*' -DestinationPath 'PPGSage50Plugin-v1.0.0.zip' -Force
       
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: plugin-package
         path: PPGSage50Plugin-v1.0.0.zip
