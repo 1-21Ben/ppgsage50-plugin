@@ -250,7 +250,7 @@ Write-Host "   5. Configurer les paramètres selon 'create-github-repo.md'"
 
 Write-Host ""
 if ($errors.Count -eq 0) {
-    Write-Host "🎉 Repository prêt pour GitHub !" -ForegroundColor Green
+    Write-Host "🎉 Repository pret pour GitHub !" -ForegroundColor Green
 } else {
-    Write-Host "🔧 Veuillez corriger les erreurs avant de créer le repository" -ForegroundColor Red
+    Write-Host "🔧 Veuillez corriger les erreurs avant de creer le repository" -ForegroundColor Red
 }
