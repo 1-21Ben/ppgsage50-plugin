@@ -1,0 +1,136 @@
+{
+  "repository": {
+    "name": "ppgsage50-plugin",
+    "description": "Plugin Sage 50 ERP pour l'intégration complète avec PPG Live - Synchronisation bidirectionnelle, gestion des commandes, devis, factures et stock",
+    "homepage": "https://ppglive.fr",
+    "visibility": "public",
+    "features": {
+      "issues": true,
+      "projects": true,
+      "wiki": false,
+      "downloads": true
+    }
+  },
+  "topics": [
+    "sage50",
+    "erp",
+    "ppg-live",
+    "integration",
+    "plugin",
+    "csharp",
+    "dotnet",
+    "api",
+    "synchronization"
+  ],
+  "labels": [
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Quelque chose ne fonctionne pas"
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "Nouvelle fonctionnalité ou demande d'amélioration"
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Améliorations ou ajouts à la documentation"
+    },
+    {
+      "name": "good first issue",
+      "color": "7057ff",
+      "description": "Bon pour les nouveaux contributeurs"
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Aide supplémentaire nécessaire"
+    },
+    {
+      "name": "priority: high",
+      "color": "ff0000",
+      "description": "Priorité élevée"
+    },
+    {
+      "name": "priority: medium",
+      "color": "ffa500",
+      "description": "Priorité moyenne"
+    },
+    {
+      "name": "priority: low",
+      "color": "00ff00",
+      "description": "Priorité faible"
+    },
+    {
+      "name": "security",
+      "color": "ff6b6b",
+      "description": "Problème de sécurité"
+    },
+    {
+      "name": "dependencies",
+      "color": "0366d6",
+      "description": "Mise à jour des dépendances"
+    },
+    {
+      "name": "api",
+      "color": "8b5cf6",
+      "description": "Problème lié à l'API PPG Live"
+    },
+    {
+      "name": "ui",
+      "color": "f59e0b",
+      "description": "Problème d'interface utilisateur"
+    },
+    {
+      "name": "sync",
+      "color": "10b981",
+      "description": "Problème de synchronisation"
+    },
+    {
+      "name": "installation",
+      "color": "6366f1",
+      "description": "Problème d'installation"
+    }
+  ],
+  "branch_protection": {
+    "main": {
+      "required_status_checks": {
+        "strict": true,
+        "contexts": ["build", "test"]
+      },
+      "enforce_admins": true,
+      "required_pull_request_reviews": {
+        "required_approving_review_count": 2,
+        "dismiss_stale_reviews": true,
+        "require_code_owner_reviews": true
+      },
+      "restrictions": {
+        "users": [],
+        "teams": ["ppg-dev-team", "ppg-security-team"]
+      }
+    }
+  },
+  "security": {
+    "vulnerability_alerts": true,
+    "secret_scanning": true,
+    "secret_scanning_push_protection": true,
+    "dependabot_security_updates": true
+  },
+  "webhooks": [
+    {
+      "url": "https://ppg-webhook.example.com/sage50-plugin",
+      "content_type": "json",
+      "secret": "webhook-secret",
+      "events": ["push", "pull_request", "release"]
+    }
+  ],
+  "release": {
+    "version": "v1.0.0",
+    "title": "Plugin PPG Sage 50 ERP v1.0.0",
+    "description": "## 🚀 Plugin PPG Sage 50 ERP v1.0.0\n\n### ✨ Fonctionnalités Principales\n- Intégration complète avec PPG Live API\n- Synchronisation bidirectionnelle Sage 50 ↔ PPG Live\n- Gestion des clients, produits, commandes, devis, factures\n- Interface utilisateur intuitive avec onglets spécialisés\n- Système de logging robuste avec log4net\n- Installation plug & play avec scripts automatisés\n\n### 📋 Installation Express\n1. Télécharger `PPGSage50Plugin-v1.0.0.zip`\n2. Extraire l'archive\n3. Exécuter `install.bat` en tant qu'administrateur\n4. Configurer les credentials API PPG Live\n5. Profiter de l'intégration complète !\n\n### 📖 Documentation\n- [Guide de démarrage rapide](QUICK_START.md)\n- [Documentation complète](README.md)\n- [Guide d'installation](INSTALLATION.md)\n\n### 🆘 Support\n- Email: support.ppglive@ppg.com\n- Documentation API: https://ppglive.fr/api/docs",
+    "draft": false,
+    "prerelease": false
+  }
+}
