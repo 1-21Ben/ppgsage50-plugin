@@ -1,0 +1,101 @@
+name: Release Plugin PPG Sage 50 ERP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Setup .NET Framework
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '4.8.x'
+        
+    - name: Restore NuGet packages
+      run: nuget restore PPGSage50Plugin.sln
+      
+    - name: Build solution
+      run: msbuild PPGSage50Plugin.sln /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal
+      
+    - name: Create distribution package
+      run: |
+        mkdir dist
+        copy "bin\Release\PPGSage50Plugin.dll" "dist\"
+        copy "bin\Release\PPGSage50Plugin.exe" "dist\"
+        copy "PPGSage50Plugin\App.config" "dist\"
+        copy "PPGSage50Plugin\log4net.config" "dist\"
+        copy "packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll" "dist\"
+        copy "packages\log4net.2.0.15\lib\net45\log4net.dll" "dist\"
+        copy "packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" "dist\"
+        copy "packages\System.Configuration.ConfigurationManager.7.0.0\lib\net48\System.Configuration.ConfigurationManager.dll" "dist\"
+        copy "install.bat" "dist\"
+        copy "README.md" "dist\"
+        copy "QUICK_START.md" "dist\"
+        copy "INSTALLATION.md" "dist\"
+        copy "LICENSE" "dist\"
+        
+    - name: Create ZIP package
+      run: powershell Compress-Archive -Path 'dist\*' -DestinationPath 'PPGSage50Plugin-${{ github.ref_name }}.zip' -Force
+      
+    - name: Generate release notes
+      id: release_notes
+      run: |
+        $version = "${{ github.ref_name }}"
+        $notes = @"
+        ## 🚀 Plugin PPG Sage 50 ERP $version
+        
+        ### ✨ Nouvelles Fonctionnalités
+        - Fonctionnalité 1
+        - Fonctionnalité 2
+        
+        ### 🐛 Corrections de Bugs
+        - Correction bug 1
+        - Correction bug 2
+        
+        ### 🔧 Améliorations
+        - Amélioration 1
+        - Amélioration 2
+        
+        ### 📋 Installation Express
+        1. Télécharger \`PPGSage50Plugin-$version.zip\`
+        2. Extraire l'archive
+        3. Exécuter \`install.bat\` en tant qu'administrateur
+        4. Configurer les credentials API PPG Live
+        5. Profiter de l'intégration complète !
+        
+        ### 📖 Documentation
+        - [Guide de démarrage rapide](QUICK_START.md)
+        - [Documentation complète](README.md)
+        - [Guide d'installation](INSTALLATION.md)
+        
+        ### 🆘 Support
+        - Email: support.ppglive@ppg.com
+        - Documentation API: https://ppglive.fr/api/docs
+        
+        ### 🔒 Sécurité
+        Cette version inclut des améliorations de sécurité importantes.
+        Veuillez mettre à jour dès que possible.
+        "@
+        
+        echo "notes<<EOF" >> $env:GITHUB_OUTPUT
+        echo $notes >> $env:GITHUB_OUTPUT
+        echo "EOF" >> $env:GITHUB_OUTPUT
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: PPGSage50Plugin-${{ github.ref_name }}.zip
+        body: ${{ steps.release_notes.outputs.notes }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true

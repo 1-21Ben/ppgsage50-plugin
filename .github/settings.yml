@@ -1,0 +1,106 @@
+# GitHub Repository Settings for PPG Sage 50 ERP Plugin
+
+# Repository Information
+name: "ppgsage50-plugin"
+description: "Plugin Sage 50 ERP pour l'intégration complète avec PPG Live - Synchronisation bidirectionnelle, gestion des commandes, devis, factures et stock"
+homepage: "https://ppglive.fr"
+topics:
+  - "sage50"
+  - "erp"
+  - "ppg-live"
+  - "integration"
+  - "plugin"
+  - "csharp"
+  - "dotnet"
+  - "api"
+  - "synchronization"
+
+# Repository Settings
+has_issues: true
+has_projects: true
+has_wiki: false
+has_downloads: true
+allow_squash_merge: true
+allow_merge_commit: true
+allow_rebase_merge: true
+delete_branch_on_merge: true
+allow_auto_merge: false
+allow_update_branch: true
+
+# Security Settings
+vulnerability_alerts: true
+secret_scanning: true
+secret_scanning_push_protection: true
+dependabot_security_updates: true
+
+# Branch Protection Rules
+branch_protection_rules:
+  - branch: "main"
+    required_status_checks:
+      strict: true
+      contexts:
+        - "build"
+        - "test"
+    enforce_admins: true
+    required_pull_request_reviews:
+      required_approving_review_count: 2
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: true
+    restrictions:
+      users: []
+      teams: ["ppg-dev-team", "ppg-security-team"]
+
+# Webhooks
+webhooks:
+  - url: "https://ppg-webhook.example.com/sage50-plugin"
+    content_type: "json"
+    secret: "webhook-secret"
+    events:
+      - "push"
+      - "pull_request"
+      - "release"
+
+# Labels
+labels:
+  - name: "bug"
+    color: "d73a4a"
+    description: "Quelque chose ne fonctionne pas"
+  - name: "enhancement"
+    color: "a2eeef"
+    description: "Nouvelle fonctionnalité ou demande d'amélioration"
+  - name: "documentation"
+    color: "0075ca"
+    description: "Améliorations ou ajouts à la documentation"
+  - name: "good first issue"
+    color: "7057ff"
+    description: "Bon pour les nouveaux contributeurs"
+  - name: "help wanted"
+    color: "008672"
+    description: "Aide supplémentaire nécessaire"
+  - name: "priority: high"
+    color: "ff0000"
+    description: "Priorité élevée"
+  - name: "priority: medium"
+    color: "ffa500"
+    description: "Priorité moyenne"
+  - name: "priority: low"
+    color: "00ff00"
+    description: "Priorité faible"
+  - name: "security"
+    color: "ff6b6b"
+    description: "Problème de sécurité"
+  - name: "dependencies"
+    color: "0366d6"
+    description: "Mise à jour des dépendances"
+  - name: "api"
+    color: "8b5cf6"
+    description: "Problème lié à l'API PPG Live"
+  - name: "ui"
+    color: "f59e0b"
+    description: "Problème d'interface utilisateur"
+  - name: "sync"
+    color: "10b981"
+    description: "Problème de synchronisation"
+  - name: "installation"
+    color: "6366f1"
+    description: "Problème d'installation"

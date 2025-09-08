@@ -1,0 +1,36 @@
+# Code owners for PPG Sage 50 ERP Plugin
+# These people will be automatically requested for review when changes are made
+
+# Global owners
+* @ppg-dev-team @ppg-security-team
+
+# Core plugin files
+/PPGSage50Plugin/ @ppg-dev-team @ppg-architect-team
+/PPGSage50Plugin/Models/ @ppg-dev-team
+/PPGSage50Plugin/Services/ @ppg-dev-team @ppg-api-team
+/PPGSage50Plugin/UI/ @ppg-dev-team @ppg-ux-team
+/PPGSage50Plugin/Configuration/ @ppg-dev-team @ppg-devops-team
+
+# Security-sensitive files
+/SECURITY.md @ppg-security-team
+/PPGSage50Plugin/Services/AuthenticationService.cs @ppg-security-team @ppg-dev-team
+/PPGSage50Plugin/Configuration/AppConfig.cs @ppg-security-team @ppg-dev-team
+
+# Documentation
+/README.md @ppg-dev-team @ppg-docs-team
+/INSTALLATION.md @ppg-devops-team @ppg-docs-team
+/QUICK_START.md @ppg-docs-team @ppg-support-team
+/CONTRIBUTING.md @ppg-dev-team @ppg-docs-team
+
+# Build and deployment
+/build.bat @ppg-devops-team
+/install.bat @ppg-devops-team @ppg-security-team
+/.github/workflows/ @ppg-devops-team
+
+# Configuration files
+/App.config @ppg-devops-team @ppg-security-team
+/log4net.config @ppg-dev-team
+/packages.config @ppg-dev-team
+
+# License and legal
+/LICENSE @ppg-legal-team
