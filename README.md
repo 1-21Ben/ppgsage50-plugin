@@ -238,7 +238,7 @@ Erreur: Échec de la synchronisation des clients
 
 ## Licence
 
-Copyright © 2024 PPG Industries. Tous droits réservés.
+Copyright © 2025 PPG Industries. Tous droits réservés.
 
 ## Contribution
 
